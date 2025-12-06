@@ -1,2 +1,2 @@
 ### Licences
-[Godot Engine - godotengine.org/license](godotengine.org/license)
+[Godot Engine - godotengine.org/license](https://godotengine.org/license/)
