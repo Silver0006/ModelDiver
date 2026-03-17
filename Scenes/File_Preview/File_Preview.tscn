@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dahblyrd2nwat"]
+
+[ext_resource type="Script" uid="uid://dphy3c0ngjctl" path="res://Scenes/File_Preview/File_Preview.gd" id="1_e8ifn"]
+[ext_resource type="PackedScene" uid="uid://cu7dvywt2eh3" path="res://Scenes/File_Preview/File_Preview_Control.tscn" id="2_87644"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e8ifn"]
+
+[sub_resource type="Sky" id="Sky_87644"]
+sky_material = SubResource("ProceduralSkyMaterial_e8ifn")
+
+[sub_resource type="Environment" id="Environment_hmfa3"]
+background_mode = 2
+sky = SubResource("Sky_87644")
+
+[node name="Node3D" type="Node3D" unique_id=381579301]
+script = ExtResource("1_e8ifn")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=255768727]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7, 0)
+current = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=552706421]
+environment = SubResource("Environment_hmfa3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1388900337]
+
+[node name="FilePreviewControl" parent="CanvasLayer" unique_id=1395898095 instance=ExtResource("2_87644")]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=633418832]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Label3D" type="Label3D" parent="CSGCylinder3D" unique_id=629853161]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-07, 10, 0, -1, -4.371139e-08, 0, 0, -1)
+pixel_size = 0.01
+text = "Spawn Point"

@@ -1,0 +1,39 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
+[application]
+
+config/name="ModelDiver"
+config/version="0.1.0"
+run/main_scene="uid://cm5vjid3gwai5"
+config/features=PackedStringArray("4.6", "Forward Plus")
+config/icon="uid://dpu3emcslmvah"
+
+[autoload]
+
+Global="*res://Global.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/subwindows/embed_subwindows=false
+
+[xr]
+
+openxr/enabled=true
+openxr/startup_alert=false
+openxr/extensions/debug_message_types=15
+openxr/extensions/render_model=true
+shaders/enabled=true

@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://buyqqj6non8wj"]
+
+[ext_resource type="Script" uid="uid://crka0ep1j81u3" path="res://Scenes/VR_View/VR_View.gd" id="1_krxjs"]
+[ext_resource type="Script" uid="uid://b3s4swl7yxti4" path="res://Scenes/VR_View/character_body_3d.gd" id="2_exr46"]
+[ext_resource type="PackedScene" uid="uid://dgfhh33q4ses4" path="res://Scenes/VR_Menu/VR_Menu.tscn" id="3_g6io8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_noarx"]
+
+[sub_resource type="Sky" id="Sky_noarx"]
+sky_material = SubResource("ProceduralSkyMaterial_noarx")
+
+[sub_resource type="Environment" id="Environment_noarx"]
+background_mode = 2
+sky = SubResource("Sky_noarx")
+
+[sub_resource type="BoxMesh" id="BoxMesh_xh83p"]
+size = Vector3(0.01, 0.01, 0.01)
+
+[sub_resource type="SystemFont" id="SystemFont_qqg0o"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_g6io8"]
+viewport_path = NodePath("CharacterBody3D/XROrigin3D/VR_Menu_Parent/VR_Menu_Viewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g6io8"]
+size = Vector3(12.71994, 7.1918335, 0.25683594)
+
+[node name="Node3D" type="Node3D" unique_id=313720549]
+script = ExtResource("1_krxjs")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=31944309]
+environment = SubResource("Environment_noarx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=832286890]
+transform = Transform3D(1, 0, 0, 0, -0.2894161, 0.95720345, 0, -0.95720345, -0.2894161, 0, 115.82431, 33.85773)
+light_energy = 4.223
+light_indirect_energy = 6.087
+light_angular_distance = 61.16
+light_specular = 0.223
+sky_mode = 2
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1055263849]
+motion_mode = 1
+script = ExtResource("2_exr46")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="CharacterBody3D" unique_id=1285260811]
+current = true
+
+[node name="XRCamera3D" type="XRCamera3D" parent="CharacterBody3D/XROrigin3D" unique_id=513912165]
+
+[node name="LeftHand" type="XRController3D" parent="CharacterBody3D/XROrigin3D" unique_id=210892337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.5, 0)
+tracker = &"left_hand"
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="CharacterBody3D/XROrigin3D/LeftHand" unique_id=2138519957]
+mesh = SubResource("BoxMesh_xh83p")
+emission_shape = 1
+emission_sphere_radius = 0.1
+direction = Vector3(1, 1, 1)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 0.1
+
+[node name="RayLeftHand" type="RayCast3D" parent="CharacterBody3D/XROrigin3D/LeftHand" unique_id=209961598]
+target_position = Vector3(0, 0, -2.15)
+collide_with_areas = true
+debug_shape_custom_color = Color(0.10980392, 0.5058824, 0.5882353, 1)
+
+[node name="RaycastLine" type="CSGBox3D" parent="CharacterBody3D/XROrigin3D/LeftHand" unique_id=1511451102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1277096)
+visible = false
+calculate_tangents = false
+size = Vector3(0.02, 0.02, 2)
+
+[node name="RightHand" type="XRController3D" parent="CharacterBody3D/XROrigin3D" unique_id=1053540985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
+tracker = &"right_hand"
+
+[node name="DebugLabel" type="Label3D" parent="CharacterBody3D/XROrigin3D/RightHand" unique_id=1336302799]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.0023248792, 0, -0.10586721)
+pixel_size = 0.001
+font = SubResource("SystemFont_qqg0o")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="CharacterBody3D/XROrigin3D/RightHand" unique_id=815021688]
+mesh = SubResource("BoxMesh_xh83p")
+emission_shape = 1
+emission_sphere_radius = 0.1
+direction = Vector3(1, 1, 1)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 0.1
+
+[node name="RayRightHand" type="RayCast3D" parent="CharacterBody3D/XROrigin3D/RightHand" unique_id=1593617721]
+target_position = Vector3(0, 0, -2.15)
+collide_with_areas = true
+debug_shape_custom_color = Color(0.10980392, 0.5058824, 0.5882353, 1)
+
+[node name="RaycastLine" type="CSGBox3D" parent="CharacterBody3D/XROrigin3D/RightHand" unique_id=1665631979]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1277096)
+visible = false
+calculate_tangents = false
+size = Vector3(0.02, 0.02, 2)
+
+[node name="VR_Menu_Parent" type="Sprite3D" parent="CharacterBody3D/XROrigin3D" unique_id=509948566]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.9099238, -1.5036259)
+visible = false
+texture = SubResource("ViewportTexture_g6io8")
+
+[node name="VR_Menu_Area3D" type="Area3D" parent="CharacterBody3D/XROrigin3D/VR_Menu_Parent" unique_id=474335298]
+
+[node name="VR_Menu_Collision" type="CollisionShape3D" parent="CharacterBody3D/XROrigin3D/VR_Menu_Parent/VR_Menu_Area3D" unique_id=1912838925]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025650024, -0.014007568, 0.040527344)
+shape = SubResource("BoxShape3D_g6io8")
+
+[node name="VR_Menu_Viewport" type="SubViewport" parent="CharacterBody3D/XROrigin3D/VR_Menu_Parent" unique_id=729133009]
+physics_object_picking = true
+gui_embed_subwindows = true
+size = Vector2i(1280, 720)
+
+[node name="VR_Menu" parent="CharacterBody3D/XROrigin3D/VR_Menu_Parent/VR_Menu_Viewport" unique_id=369878874 instance=ExtResource("3_g6io8")]
+mouse_filter = 1
+
+[connection signal="pressed" from="CharacterBody3D/XROrigin3D/VR_Menu_Parent/VR_Menu_Viewport/VR_Menu/Button_ResetPos" to="CharacterBody3D" method="_reset_player_pos"]
+[connection signal="pressed" from="CharacterBody3D/XROrigin3D/VR_Menu_Parent/VR_Menu_Viewport/VR_Menu/Button_ExitVR" to="CharacterBody3D" method="_on_button_exit_vr_pressed"]
+
+[editable path="CharacterBody3D/XROrigin3D/VR_Menu_Parent/VR_Menu_Viewport/VR_Menu"]

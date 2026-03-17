@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://cu7dvywt2eh3"]
+
+[ext_resource type="Script" uid="uid://c7ucnwserpx10" path="res://Scenes/File_Preview/file_preview_control.gd" id="1_6o1c8"]
+
+[node name="FilePreviewControl" type="Control" unique_id=581163096]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6o1c8")
+
+[node name="Label_ModelScalar" type="Label" parent="." unique_id=1342244985]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 643.0
+offset_right = 122.0
+offset_bottom = 666.0
+text = "Model Scalar: "
+
+[node name="SpinBox_ModelScalar" type="SpinBox" parent="Label_ModelScalar" unique_id=524393989]
+layout_mode = 0
+offset_left = 115.0
+offset_top = -3.0
+offset_right = 201.5625
+offset_bottom = 28.0
+min_value = -100.0
+
+[node name="Label_xyz" type="Label" parent="." unique_id=1444405911]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 682.0
+offset_right = 262.0
+offset_bottom = 705.0
+text = "X:                         Y:                        Z:"
+
+[node name="SpinBox_position_x" type="SpinBox" parent="Label_xyz" unique_id=651110064]
+layout_mode = 0
+offset_left = 25.0
+offset_top = -4.0
+offset_right = 111.5625
+offset_bottom = 27.0
+min_value = -100.0
+
+[node name="SpinBox_position_y" type="SpinBox" parent="Label_xyz" unique_id=878227831]
+layout_mode = 0
+offset_left = 254.0
+offset_top = -4.0
+offset_right = 340.5625
+offset_bottom = 27.0
+min_value = -100.0
+
+[node name="SpinBox_position_z" type="SpinBox" parent="Label_xyz" unique_id=944816747]
+layout_mode = 0
+offset_left = 144.0
+offset_top = -4.0
+offset_right = 230.5625
+offset_bottom = 27.0
+min_value = -100.0
+
+[node name="Label_CameraHeight" type="Label" parent="." unique_id=463091010]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 605.0
+offset_right = 138.0
+offset_bottom = 628.0
+text = "Camera Height: "
+
+[node name="SpinBox_Camera_Height" type="SpinBox" parent="Label_CameraHeight" unique_id=267373658]
+layout_mode = 0
+offset_left = 127.0
+offset_top = -3.0
+offset_right = 213.5625
+offset_bottom = 28.0
+min_value = -1000.0
+max_value = 1000.0
+value = 7.0
+
+[connection signal="value_changed" from="Label_ModelScalar/SpinBox_ModelScalar" to="." method="_on_model_scalar_value_changed"]
+[connection signal="value_changed" from="Label_xyz/SpinBox_position_x" to="." method="_on_position_x_value_changed"]
+[connection signal="value_changed" from="Label_xyz/SpinBox_position_y" to="." method="_on_position_y_value_changed"]
+[connection signal="value_changed" from="Label_xyz/SpinBox_position_z" to="." method="_on_position_z_value_changed"]
+[connection signal="value_changed" from="Label_CameraHeight/SpinBox_Camera_Height" to="." method="_camera_height_value_changed"]

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dgfhh33q4ses4"]
+
+[sub_resource type="Theme" id="Theme_gp6cb"]
+
+[node name="VR_Menu" type="Control" unique_id=1358522893]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_gp6cb")
+
+[node name="Button_ResetPos" type="Button" parent="." unique_id=963468278]
+layout_mode = 0
+offset_left = 481.0
+offset_top = 216.0
+offset_right = 829.0
+offset_bottom = 350.0
+text = "Reset Position"
+
+[node name="Button_ExitVR" type="Button" parent="." unique_id=1998910056]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 406.0
+offset_right = 776.0
+offset_bottom = 545.0
+text = "Exit to Desktop"
